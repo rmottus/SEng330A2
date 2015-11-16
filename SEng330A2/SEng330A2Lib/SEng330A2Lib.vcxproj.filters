@@ -39,6 +39,9 @@
     <ClInclude Include="MachineFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MachineList.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -56,5 +59,13 @@
     <ClCompile Include="MachineFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MachineList.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MachineList.proto">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

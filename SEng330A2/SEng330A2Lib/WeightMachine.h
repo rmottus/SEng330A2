@@ -8,26 +8,23 @@ class MachineFactory;
 class WeightMachine : public Machine {
 	friend MachineFactory;
 public:
-	enum WeightMachineType {
-		BenchPress = 1, PreacherCurl, LegPress
-	};
 
-	WeightMachine(const std::string &n, const WeightMachineType &t);
+	WeightMachine(const std::string &n, const proto::Machine_WeightType &t);
 	WeightMachine(const WeightMachine &w);
+	WeightMachine(const proto::Machine &m);
 	~WeightMachine();
 
-	WeightMachineType const getType();
+	proto::Machine_WeightType const getType();
 	void beginWorkout();
 	void endWorkout();
 	Machine* clone();
 	std::string getTypeString();
 
-	WeightMachineType getType() const;
+	proto::Machine_WeightType getType() const;
 	void setWeight(const int &new_weight);
 
-	static WeightMachineType parseTypeFromString(const std::string &t);
+	static proto::Machine_WeightType parseTypeFromString(const std::string &t);
 private:
-	WeightMachineType _type;
-	int _weight;
 	time_t _startTime;
+	int _weight;
 };

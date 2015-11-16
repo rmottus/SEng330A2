@@ -1,0 +1,28 @@
+package proto;
+
+message Machine {
+	required int32 id = 1;
+	required string name = 2;
+	
+	enum CardioType {
+		TREADMILL = 1;
+		ELLIPTICAL = 2;
+		STATIONARYBIKE = 3;
+	}
+
+	enum WeightType {
+		BENCHPRESS = 1;
+		PREACHERCURL = 2;
+		LEGPRESS = 3;
+	}
+
+	// A machine can have one of a cardio type or a weight type
+	oneof type {
+		CardioType cType = 3;
+		WeightType wType = 4;
+	}
+}
+
+message MachineList {
+	repeated Machine machines = 1;
+}

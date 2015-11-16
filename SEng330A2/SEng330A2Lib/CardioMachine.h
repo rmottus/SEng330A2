@@ -8,12 +8,9 @@ class MachineFactory;
 class CardioMachine : public Machine {
 	friend MachineFactory;
 public:
-	enum CardioMachineType {
-		Treadmill = 1, Elliptical, StationaryBike
-	};
-
-	CardioMachine(const std::string &n, const CardioMachineType &t);
+	CardioMachine(const std::string &n, const proto::Machine_CardioType &t);
 	CardioMachine(const CardioMachine &c);
+	CardioMachine(const proto::Machine &m);
 	~CardioMachine();
 
 	// Inherited from Machine
@@ -23,14 +20,13 @@ public:
 	std::string getTypeString();
 
 	// Class specific
-	CardioMachineType getType() const;
+	proto::Machine_CardioType getType() const;
 	void increaseResistance();
 	void decreaseResistance();
 
 	// Static
-	static CardioMachineType parseTypeFromString(const std::string &t);
+	static proto::Machine_CardioType parseTypeFromString(const std::string &t);
 private:
-	CardioMachineType _type;
 	time_t _startTime;
 	int _resistance;
 };

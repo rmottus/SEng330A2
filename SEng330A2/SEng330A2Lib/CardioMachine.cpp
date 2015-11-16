@@ -2,18 +2,23 @@
 #include "CardioMachine.h"
 
 
-CardioMachine::CardioMachine(const std::string &name, const CardioMachineType &t) :
+CardioMachine::CardioMachine(const std::string &name, const proto::Machine_CardioType &t) :
 	Machine(name),
-	_type(t),
 	_startTime(-1),
 	_resistance(0) {
+	_protoMachine.set_ctype(t);
 }
 
 CardioMachine::CardioMachine(const CardioMachine &c) :
 	Machine(c),
-	_type(c.getType()),
 	_startTime(c._startTime),
 	_resistance(c._resistance){
+}
+
+CardioMachine::CardioMachine(const proto::Machine &m) :
+	Machine(m),
+	_startTime(-1),
+	_resistance(0){
 }
 
 /**
@@ -35,12 +40,12 @@ Machine* CardioMachine::clone() {
 }
 
 std::string CardioMachine::getTypeString() {
-	switch (_type) {
-	case Treadmill:
+	switch (_protoMachine.ctype()) {
+	case proto::Machine_CardioType::Machine_CardioType_TREADMILL:
 		return "Treadmill";
-	case Elliptical:
+	case proto::Machine_CardioType::Machine_CardioType_ELLIPTICAL:
 		return "Eliptical";
-	case StationaryBike:
+	case proto::Machine_CardioType::Machine_CardioType_STATIONARYBIKE:
 		return "Stationary Bike";
 	default:
 		return "";
@@ -51,8 +56,8 @@ std::string CardioMachine::getTypeString() {
 * CardioMachine specific methods
 */
 
-CardioMachine::CardioMachineType CardioMachine::getType() const {
-	return _type;
+proto::Machine_CardioType CardioMachine::getType() const {
+	return _protoMachine.ctype();
 }
 
 void CardioMachine::increaseResistance() {
@@ -69,19 +74,19 @@ void CardioMachine::decreaseResistance() {
 * Static methods
 */
 
-CardioMachine::CardioMachineType CardioMachine::parseTypeFromString(const std::string &t) {
+proto::Machine_CardioType CardioMachine::parseTypeFromString(const std::string &t) {
 	std::string tlc;
 	// Transform the string to lower case
 	std::transform(t.begin(), t.end(), std::back_inserter(tlc), ::tolower);
 
 	if (tlc == "treadmill") {
-		return CardioMachine::CardioMachineType(Treadmill);
+		return proto::Machine_CardioType(proto::Machine_CardioType::Machine_CardioType_TREADMILL);
 	}
 	else if (tlc == "elliptical") {
-		return CardioMachine::CardioMachineType(Elliptical);
+		return proto::Machine_CardioType(proto::Machine_CardioType::Machine_CardioType_ELLIPTICAL);
 	}
 	else if (tlc == "stationarybike" || tlc == "stationary bike") {
-		return CardioMachine::CardioMachineType(StationaryBike);
+		return proto::Machine_CardioType(proto::Machine_CardioType::Machine_CardioType_STATIONARYBIKE);
 	}
-	return CardioMachine::CardioMachineType();
+	return proto::Machine_CardioType();
 }

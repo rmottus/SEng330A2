@@ -11,9 +11,9 @@
 #include <ctype.h>
 #include <algorithm>
 #include <iterator>
-#include <tchar.h>
 #include <iostream>
 #include <vector>
+#include "MachineList.pb.h"
 
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 

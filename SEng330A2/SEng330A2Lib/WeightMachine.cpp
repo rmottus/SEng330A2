@@ -1,18 +1,23 @@
 #include "stdafx.h"
 #include "WeightMachine.h"
 
-WeightMachine::WeightMachine(const std::string &n, const WeightMachine::WeightMachineType &t) :
+WeightMachine::WeightMachine(const std::string &n, const proto::Machine_WeightType &t) :
 	Machine(n),
-	_type(t),
-	_weight(0),
-	_startTime(-1) {
+	_startTime(-1),
+	_weight(0) {
+	_protoMachine.set_wtype(t);
 }
 	
 WeightMachine::WeightMachine(const WeightMachine &w) :
 	Machine(w),
-	_type(w.getType()),
-	_weight(w._weight),
-	_startTime(w._startTime) {
+	_startTime(w._startTime),
+	_weight(w._weight) {
+}
+
+WeightMachine::WeightMachine(const proto::Machine &m) :
+	Machine(m),
+	_startTime(-1),
+	_weight(0) {
 }
 
 /**
@@ -34,12 +39,12 @@ Machine* WeightMachine::clone() {
 }
 
 std::string WeightMachine::getTypeString() {
-	switch (_type) {
-	case BenchPress:
+	switch (_protoMachine.wtype()) {
+	case proto::Machine_WeightType::Machine_WeightType_BENCHPRESS:
 		return "Bench Press";
-	case PreacherCurl:
+	case proto::Machine_WeightType::Machine_WeightType_PREACHERCURL:
 		return "Preacher Curl";
-	case LegPress:
+	case proto::Machine_WeightType::Machine_WeightType_LEGPRESS:
 		return "Leg Press";
 	default:
 		return "";
@@ -50,8 +55,8 @@ std::string WeightMachine::getTypeString() {
 * CardioMachine specific methods
 */
 
-WeightMachine::WeightMachineType WeightMachine::getType() const {
-	return _type;
+proto::Machine_WeightType WeightMachine::getType() const {
+	return _protoMachine.wtype();
 }
 
 void WeightMachine::setWeight(const int &new_weight) {
@@ -63,19 +68,19 @@ void WeightMachine::setWeight(const int &new_weight) {
 * Static methods
 */
 
-WeightMachine::WeightMachineType WeightMachine::parseTypeFromString(const std::string &t) {
+proto::Machine_WeightType WeightMachine::parseTypeFromString(const std::string &t) {
 	std::string tlc;
 	// Transform the string to lower case
 	std::transform(t.begin(), t.end(), std::back_inserter(tlc), ::tolower);
 
 	if (tlc == "benchpress" || tlc == "bench press") {
-		return WeightMachine::WeightMachineType(BenchPress);
+		return proto::Machine_WeightType(proto::Machine_WeightType::Machine_WeightType_BENCHPRESS);
 	}
 	else if (tlc == "preachercurl" || tlc == "preacher curl") {
-		return WeightMachine::WeightMachineType(PreacherCurl);
+		return proto::Machine_WeightType(proto::Machine_WeightType::Machine_WeightType_PREACHERCURL);
 	}
 	else if (tlc == "legpress" || tlc == "leg press") {
-		return WeightMachine::WeightMachineType(LegPress);
+		return proto::Machine_WeightType(proto::Machine_WeightType::Machine_WeightType_LEGPRESS);
 	}
-	return WeightMachine::WeightMachineType();
+	return proto::Machine_WeightType();
 }
