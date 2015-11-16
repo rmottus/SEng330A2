@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEng330A2Main", "SEng330A2Main\SEng330A2Main.vcxproj", "{0BCDCA98-BEDD-4B9A-A960-6B5BD3CC88C2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A925409-33D3-493D-A9A5-36CC6C17610B} = {5A925409-33D3-493D-A9A5-36CC6C17610B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEng330A2Lib", "SEng330A2Lib\SEng330A2Lib.vcxproj", "{5A925409-33D3-493D-A9A5-36CC6C17610B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{0BCDCA98-BEDD-4B9A-A960-6B5BD3CC88C2}.Debug|Win32.Build.0 = Debug|Win32
 		{0BCDCA98-BEDD-4B9A-A960-6B5BD3CC88C2}.Release|Win32.ActiveCfg = Release|Win32
 		{0BCDCA98-BEDD-4B9A-A960-6B5BD3CC88C2}.Release|Win32.Build.0 = Release|Win32
+		{5A925409-33D3-493D-A9A5-36CC6C17610B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A925409-33D3-493D-A9A5-36CC6C17610B}.Debug|Win32.Build.0 = Debug|Win32
+		{5A925409-33D3-493D-A9A5-36CC6C17610B}.Release|Win32.ActiveCfg = Release|Win32
+		{5A925409-33D3-493D-A9A5-36CC6C17610B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
