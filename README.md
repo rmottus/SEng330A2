@@ -15,13 +15,15 @@ It uses Google Protocol Buffers 2.6.1 for saving/loading, Google Test 1.7.0 for 
 
 ## Installation
 1. Clone this repository locally with Visual Studio and open the solution.
-    a. See this page for instructions http://www.malgreve.net/2014/06/17/cloning-getting-code-from-git-repository-to-visual-studio/.
+    1. See this page for instructions http://www.malgreve.net/2014/06/17/cloning-getting-code-from-git-repository-to-visual-studio/.
 2. Select Build -> Build Solution. By default this will build the project for debugging. If you wish to only build for release, change Debug to Release at the top of the screen.
 3. If you wish to run the code from within Visual Studio, you can:
-    1. Right click on the project that you wish to run (SEng330A2Main or SEng330A2Test) and select "Set as StartUp project"
+    1. Right click on the project that you wish to run (SEng330A2Main or SEng330A2Test) and select "Set as StartUp Project"
     2. Choose Debug -> Start Without Debugging from the top menu. 
 4. You may also run the program manually by going to `<CheckoutDirectory>\SEng330A2\SEng330A2\<Debug_or_Release>\` and running `SEng330A2Main.exe` (or `SEng330A2Test.exe`).
-5. To regenerate the protocol buffer files, from within the `<CheckoutDirectoy>\SEng330A2\SEng330A2\protobuf` folder run the command: `protoc -I=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ --cpp_out=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ <CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\MachineList.proto`
+5. To regenerate the protocol buffer files, from within the `<CheckoutDirectoy>\SEng330A2\SEng330A2\protobuf` folder run the command:
+
+    `protoc -I=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ --cpp_out=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ <CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\MachineList.proto`
 
 6. To regenereate documentation, run `deoxygen` or `deoxygen Doxyfile` from `<CheckoutDirectory>\SEng330A2\SEng330A2`. You can also open the `<CheckoutDirectory>\SEng330A2\SEng330A2\Doxyfile` in the Deoxygen GUI and generate it that way.
 
