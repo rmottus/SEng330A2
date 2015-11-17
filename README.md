@@ -21,9 +21,7 @@ It uses Google Protocol Buffers 2.6.1 for saving/loading, Google Test 1.7.0 for 
     1. Right click on the project that you wish to run (SEng330A2Main or SEng330A2Test) and select "Set as StartUp project"
     2. Choose Debug -> Start Without Debugging from the top menu. 
 4. You may also run the program manually by going to `<CheckoutDirectory>\SEng330A2\SEng330A2\<Debug_or_Release>\` and running `SEng330A2Main.exe` (or `SEng330A2Test.exe`).
-5. To regenerate the protocol buffer files, from within the `<CheckoutDirectoy>\SEng330A2\SEng330A2\protobuf` folder run the command:
-
-`protoc -I=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ --cpp_out=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ <CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\MachineList.proto`
+5. To regenerate the protocol buffer files, from within the `<CheckoutDirectoy>\SEng330A2\SEng330A2\protobuf` folder run the command: `protoc -I=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ --cpp_out=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ <CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\MachineList.proto`
 
 6. To regenereate documentation, run `deoxygen` or `deoxygen Doxyfile` from `<CheckoutDirectory>\SEng330A2\SEng330A2`. You can also open the `<CheckoutDirectory>\SEng330A2\SEng330A2\Doxyfile` in the Deoxygen GUI and generate it that way.
 
