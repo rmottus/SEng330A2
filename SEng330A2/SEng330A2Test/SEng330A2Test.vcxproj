@@ -84,16 +84,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MachineFactoryFixture.cpp" />
     <ClCompile Include="SEng330A2Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SEng330A2Lib\SEng330A2Lib.vcxproj">
       <Project>{5a925409-33d3-493d-a9a5-36cc6c17610b}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MachineFactoryFixture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

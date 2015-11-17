@@ -21,7 +21,7 @@ CardioMachine::CardioMachine(const proto::Machine &m) :
 	_resistance(0){
 }
 
-/**
+/*
 * Methods to inherited from Machine
 */
 
@@ -39,7 +39,7 @@ Machine* CardioMachine::clone() {
 	return new CardioMachine(*this);
 }
 
-std::string CardioMachine::getTypeString() {
+std::string CardioMachine::getTypeString() const {
 	switch (_protoMachine.ctype()) {
 	case proto::Machine_CardioType::Machine_CardioType_TREADMILL:
 		return "Treadmill";
@@ -52,7 +52,7 @@ std::string CardioMachine::getTypeString() {
 	}
 }
 
-/**
+/*
 * CardioMachine specific methods
 */
 
@@ -60,11 +60,13 @@ proto::Machine_CardioType CardioMachine::getType() const {
 	return _protoMachine.ctype();
 }
 
+/** Cannot set resistance above 5 */
 void CardioMachine::increaseResistance() {
 	if (_resistance < 5) 
 		_resistance++;
 }
 
+/** Cannot set resistance below 0 */
 void CardioMachine::decreaseResistance() {
 	if (_resistance > 0) 
 		_resistance--;
@@ -78,10 +80,11 @@ time_t CardioMachine::getStartTime() const {
 	return _startTime;
 }
 
-/**
+/*
 * Static methods
 */
 
+/** String are set to lowercase to support more options. */
 proto::Machine_CardioType CardioMachine::parseTypeFromString(const std::string &t) {
 	std::string tlc;
 	// Transform the string to lower case

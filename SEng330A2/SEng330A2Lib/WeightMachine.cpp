@@ -23,7 +23,7 @@ WeightMachine::WeightMachine(const proto::Machine &m) :
 	_repetitions(0) {
 }
 
-/**
+/*
 * Methods to inherited from Machine
 */
 
@@ -41,7 +41,7 @@ Machine* WeightMachine::clone() {
 	return new WeightMachine(*this);
 }
 
-std::string WeightMachine::getTypeString() {
+std::string WeightMachine::getTypeString() const {
 	switch (_protoMachine.wtype()) {
 	case proto::Machine_WeightType::Machine_WeightType_BENCHPRESS:
 		return "Bench Press";
@@ -54,7 +54,7 @@ std::string WeightMachine::getTypeString() {
 	}
 }
 
-/**
+/*
 * WeightoMachine specific methods
 */
 
@@ -62,8 +62,9 @@ proto::Machine_WeightType WeightMachine::getType() const {
 	return _protoMachine.wtype();
 }
 
+/** Can only set weight between 0 and  500 inclusive. */
 void WeightMachine::setWeight(const int &new_weight) {
-	if (new_weight > 0 && new_weight < 500) 
+	if (new_weight >= 0 && new_weight <= 500) 
 		_weight = new_weight;
 }
 
@@ -83,10 +84,11 @@ time_t WeightMachine::getStartTime() const {
 	return _startTime;
 }
 
-/**
+/*
 * Static methods
 */
 
+/** String are set to lowercase to support more options. */
 proto::Machine_WeightType WeightMachine::parseTypeFromString(const std::string &t) {
 	std::string tlc;
 	// Transform the string to lower case
