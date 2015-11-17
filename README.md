@@ -2,7 +2,7 @@
 Repo for SEng 330 Assignment 2 at UVic during the Fall 2015 semester.
 
 ## Introduction
-The project is created in Visual Studio 2013 Community, and includes the project files to be imported directly into this program.
+The project is created in Visual Studio 2013 Community (with VC++11), and includes the project files to be imported directly into this program. It should support all 32/64-bit Windows systems that can run Visual Studio 2013, but it should be noted that all development and testing was on a Windows 10 64-bit computer.
 
 This solution consists of three projects:
 * SEng330A2Lib creates a library of the base functionality for the solution.
