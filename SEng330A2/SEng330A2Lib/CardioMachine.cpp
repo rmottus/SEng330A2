@@ -70,6 +70,14 @@ void CardioMachine::decreaseResistance() {
 		_resistance--;
 }
 
+int CardioMachine::getResistance() const {
+	return _resistance;
+}
+
+time_t CardioMachine::getStartTime() const {
+	return _startTime;
+}
+
 /**
 * Static methods
 */

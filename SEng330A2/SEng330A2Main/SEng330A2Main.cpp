@@ -5,6 +5,7 @@
 #include "WeightMachine.h"
 #include "MachineFactory.h"
 #include "MachineList.pb.h"
+#include <stdio.h>
 #include <tchar.h>
 #include <fstream>
 

@@ -4,20 +4,23 @@
 WeightMachine::WeightMachine(const std::string &n, const proto::Machine_WeightType &t) :
 	Machine(n),
 	_startTime(-1),
-	_weight(0) {
+	_weight(0),
+	_repetitions(0) {
 	_protoMachine.set_wtype(t);
 }
 	
 WeightMachine::WeightMachine(const WeightMachine &w) :
 	Machine(w),
 	_startTime(w._startTime),
-	_weight(w._weight) {
+	_weight(w._weight),
+	_repetitions(w._repetitions)  {
 }
 
 WeightMachine::WeightMachine(const proto::Machine &m) :
 	Machine(m),
 	_startTime(-1),
-	_weight(0) {
+	_weight(0),
+	_repetitions(0) {
 }
 
 /**
@@ -52,7 +55,7 @@ std::string WeightMachine::getTypeString() {
 }
 
 /**
-* CardioMachine specific methods
+* WeightoMachine specific methods
 */
 
 proto::Machine_WeightType WeightMachine::getType() const {
@@ -62,6 +65,22 @@ proto::Machine_WeightType WeightMachine::getType() const {
 void WeightMachine::setWeight(const int &new_weight) {
 	if (new_weight > 0 && new_weight < 500) 
 		_weight = new_weight;
+}
+
+int WeightMachine::getWeight() const {
+	return _weight;
+}
+
+void WeightMachine::doRep() {
+	_repetitions++;
+}
+
+int WeightMachine::getReps() const {
+	return _repetitions;
+}
+
+time_t WeightMachine::getStartTime() const {
+	return _startTime;
 }
 
 /**

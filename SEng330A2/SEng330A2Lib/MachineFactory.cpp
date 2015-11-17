@@ -8,13 +8,15 @@ MachineFactory::~MachineFactory() {
 	delete _wmProto;
 }
 
-Machine* MachineFactory::createCardioMachine(const std::string &n, const proto::Machine_CardioType &t) {
-	Machine* result;
+CardioMachine* MachineFactory::createCardioMachine(const std::string &n, const proto::Machine_CardioType &t) {
+	CardioMachine* result;
 	if (_cmProto) {
-		result = _cmProto->clone();
+		result = (CardioMachine*)_cmProto->clone();
 		result->_protoMachine.set_id(Machine::_nextId++);
 		result->_protoMachine.set_name(n);
 		result->_protoMachine.set_ctype(t);
+		result->_startTime = -1;
+		result->_resistance = 0;
 	}
 	else {
 		result = new CardioMachine(n, t);
@@ -24,13 +26,16 @@ Machine* MachineFactory::createCardioMachine(const std::string &n, const proto::
 	return result;
 }
 
-Machine* MachineFactory::createWeightMachine(const std::string &n, const proto::Machine_WeightType &t) {
-	Machine* result;
+WeightMachine* MachineFactory::createWeightMachine(const std::string &n, const proto::Machine_WeightType &t) {
+	WeightMachine* result;
 	if (_wmProto) {
-		result = _wmProto->clone();
+		result = (WeightMachine*)_wmProto->clone();
 		result->_protoMachine.set_id(Machine::_nextId++);
 		result->_protoMachine.set_name(n);
 		result->_protoMachine.set_wtype(t);
+		result->_startTime = -1;
+		result->_repetitions = 0;
+		result->_weight = 0;
 	}
 	else {
 		result = new WeightMachine(n, t);
@@ -46,20 +51,25 @@ Machine* MachineFactory::createMachine(const proto::Machine &m) {
 		if (_cmProto) {
 			result = _cmProto->clone();
 			result->_protoMachine = m;
+			((CardioMachine*)result)->_startTime = -1;
+			((CardioMachine*)result)->_resistance = 0;
 		}
 		else {
 			result = new CardioMachine(m);
-			_cmProto = result;
+			_cmProto = (CardioMachine*) result;
 		}
 	}
 	else {
 		if (_wmProto) {
 			result = _wmProto->clone();
 			result->_protoMachine = m;
-					}
+			((WeightMachine*)result)->_startTime = -1;
+			((WeightMachine*)result)->_repetitions = 0;
+			((WeightMachine*)result)->_weight = 0;
+		}
 		else {
 			result = new WeightMachine(m);
-			_wmProto = result;
+			_wmProto = (WeightMachine*)result;
 		}
 	}
 	result->_protoMachine.set_id(Machine::_nextId++);

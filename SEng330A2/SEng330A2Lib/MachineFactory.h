@@ -3,16 +3,19 @@
 #include "CardioMachine.h"
 #include "WeightMachine.h"
 
+class MachineFactoryFixture;
+
 class MachineFactory {
+	friend MachineFactoryFixture;
 public:
 	MachineFactory();
 	~MachineFactory();
 
-	Machine* createCardioMachine(const std::string &name, const proto::Machine_CardioType &t);
-	Machine* createWeightMachine(const std::string &name, const proto::Machine_WeightType &t);
+	CardioMachine* createCardioMachine(const std::string &name, const proto::Machine_CardioType &t);
+	WeightMachine* createWeightMachine(const std::string &name, const proto::Machine_WeightType &t);
 	Machine* createMachine(const proto::Machine &m);
 
 private:
-	Machine* _cmProto;
-	Machine* _wmProto;
+	CardioMachine* _cmProto;
+	WeightMachine* _wmProto;
 };
