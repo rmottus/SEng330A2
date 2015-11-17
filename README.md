@@ -25,7 +25,7 @@ It uses Google Protocol Buffers 2.6.1 for saving/loading, Google Test 1.7.0 for 
 
     `protoc -I=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ --cpp_out=<CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\ <CheckoutDirectoy>\SEng330A2\SEng330A2\SEng330A2Lib\MachineList.proto`
 
-6. To regenereate documentation, run `deoxygen` or `deoxygen Doxyfile` from `<CheckoutDirectory>\SEng330A2\SEng330A2`. You can also open the `<CheckoutDirectory>\SEng330A2\SEng330A2\Doxyfile` in the Deoxygen GUI and generate it that way.
+6. To regenerate documentation, run `deoxygen` or `deoxygen Doxyfile` from `<CheckoutDirectory>\SEng330A2\SEng330A2`. You can also open the `<CheckoutDirectory>\SEng330A2\SEng330A2\Doxyfile` in the Deoxygen GUI and generate it that way.
     1. Doxygen can be download from http://www.stack.nl/~dimitri/doxygen/download.html 
 
 ---
